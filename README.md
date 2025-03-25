@@ -49,6 +49,10 @@ A star schema was built with proper relationships between the tables.
 
 ![Dashboard Screenshot](images/dashboard.png)
 
+## 🧠 Code Files
+
+- `code.py`: Includes Python code for processing, cleaning, and transforming the raw CSV files before creating the semantic model in Microsoft Fabric.
+
 ---
 
-> # Created by Sahar Radmehr as part of my data analytics portfolio.
+> # Created by Sahar Radmehr.
