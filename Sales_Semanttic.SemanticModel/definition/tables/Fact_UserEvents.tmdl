@@ -1,0 +1,138 @@
+table Fact_UserEvents
+	lineageTag: 94fa85dd-88a8-4809-8823-32ffe6c10437
+	sourceLineageTag: [dbo].[Fact_UserEvents]
+
+	column event_time
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: d8d7aaff-2948-4b2b-bb22-be8476d76456
+		sourceLineageTag: event_time
+		summarizeBy: none
+		sourceColumn: event_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_type
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7de791de-f4b7-4293-af7b-ca6ce5aaa4e0
+		sourceLineageTag: event_type
+		summarizeBy: none
+		sourceColumn: event_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e9023118-5dca-4062-aac4-16f34a625e95
+		sourceLineageTag: product_id
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 291121bf-0da1-42ee-8a7b-2274f014b6fc
+		sourceLineageTag: category_id
+		summarizeBy: none
+		sourceColumn: category_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_code
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b1a744d7-c8d3-49f0-99c8-44e1c9802b1b
+		sourceLineageTag: category_code
+		summarizeBy: none
+		sourceColumn: category_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column brand
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6c872fe3-889c-46b0-8378-18659cd57b4d
+		sourceLineageTag: brand
+		summarizeBy: none
+		sourceColumn: brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 9693dd28-c9f6-4886-85dc-cb5c44de7c8e
+		sourceLineageTag: price
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column user_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a22e3dfc-f3ed-48af-bf24-71a5f5386ac1
+		sourceLineageTag: user_id
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_session
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7a89601a-3ddf-4a05-89d6-e1e581b535d4
+		sourceLineageTag: user_session
+		summarizeBy: none
+		sourceColumn: user_session
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 26178388-debc-4929-a85e-1cb11d0534f0
+		sourceLineageTag: event_date
+		summarizeBy: none
+		sourceColumn: event_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column load_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: f25f28fc-ad93-4084-b4a1-e9cf1b33e21d
+		sourceLineageTag: load_date
+		summarizeBy: none
+		sourceColumn: load_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ef91e4cd-31cd-4a08-8de7-48c8a4288198
+		sourceLineageTag: month_name
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_UserEvents = entity
+		mode: directLake
+		source
+			entityName: Fact_UserEvents
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

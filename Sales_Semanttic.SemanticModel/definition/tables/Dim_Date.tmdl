@@ -1,0 +1,259 @@
+table Dim_Date
+	lineageTag: 2391d00f-0e80-4d98-94f7-3e56738e1128
+	sourceLineageTag: [dbo].[Dim_Date]
+
+	measure 'Total Revenue' = ```
+			SUM(Fact_UserEvents[price])
+			
+			
+			```
+		lineageTag: e5dcfd50-fded-4549-ad28-6cef45da4805
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cart Count' = ```
+			
+			CALCULATE(
+			    COUNTROWS(Fact_UserEvents),
+			    Fact_UserEvents[event_type] = "cart"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 4360066b-5d39-4666-934f-b81c425f1760
+
+		changedProperty = Name
+
+	measure 'Purchase Count' = ```
+			
+			CALCULATE(
+			    COUNTROWS(Fact_UserEvents),
+			    Fact_UserEvents[event_type] = "purchase"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: ca29e9d0-df34-4d55-9dec-bf12b3455dfc
+
+		changedProperty = Name
+
+	measure 'Remove from Cart Count' = ```
+			
+			CALCULATE(
+			    COUNTROWS(Fact_UserEvents),
+			    Fact_UserEvents[event_type] = "remove_from_cart"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: f0b9fdda-6ca2-42cc-84dc-30ebbe03e8c8
+
+		changedProperty = Name
+
+	measure 'Add to Cart Count' = ```
+			
+			CALCULATE(
+			    COUNTROWS(Fact_UserEvents),
+			    Fact_UserEvents[event_type] = "add_to_cart"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: e730739d-2ea9-4497-8722-6877a05bc46e
+
+		changedProperty = Name
+
+	measure 'View Count' = ```
+			
+			CALCULATE(
+			    COUNTROWS(Fact_UserEvents),
+			    Fact_UserEvents[event_type] = "view"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: c076ea4d-381b-4b11-a7d6-a6d2fb3e6065
+
+		changedProperty = Name
+
+	measure 'Event Count' = ```
+			COUNTROWS(Fact_UserEvents)
+			
+			```
+		formatString: 0
+		lineageTag: ad64157b-83c7-4e4b-9575-388840c2e325
+
+		changedProperty = Name
+
+	measure 'Distinct Users' = ```
+			DISTINCTCOUNT(Fact_UserEvents[user_id])
+			
+			```
+		formatString: 0
+		lineageTag: 83a55e66-0ca3-48a2-9098-9966c752404f
+
+		changedProperty = Name
+
+	measure 'Average Order Value' = ```
+			
+			DIVIDE(
+			    [Total Revenue],
+			    [Purchase Count],
+			    0
+			)
+			
+			```
+		lineageTag: 03e17d6d-1390-4a0e-94c0-d35140cabd02
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Conversion Rate %' = ```
+			
+			DIVIDE([Purchase Count], [View Count], 0)
+			
+			
+			```
+		lineageTag: e2591a8d-db79-4b20-aa8a-507cbcf45d7b
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Tooltip Info' = ```
+			
+			"Event Type: " & SELECTEDVALUE(Fact_UserEvents[event_type]) &
+			" | Total Revenue: " & FORMAT([Total Revenue], "$#,##0")
+			
+			```
+		lineageTag: 613255ef-e4c1-4c65-95cb-5c991b773afa
+
+		changedProperty = Name
+
+	measure 'Revenue Tooltip' =
+			
+			"Year: " & SELECTEDVALUE('Dim_Date'[year]) &
+			" | Month: " & SELECTEDVALUE('Dim_Date'[month_name]) &
+			" | Total Revenue: " & FORMAT([Total Revenue], "$#,##0")
+		lineageTag: e41e8d4d-7a58-4877-8321-4e1ddd978707
+
+		changedProperty = Name
+
+	measure 'Conversion Tooltip' = ```
+			
+			"Month: " & SELECTEDVALUE(Dim_Date[month_name]) &
+			" | Year: " & SELECTEDVALUE(Dim_Date[year]) &
+			" | Conversion Rate: " & FORMAT([Conversion Rate %], "0.00%")
+			
+			```
+		lineageTag: 8c116e32-56eb-48ca-acaf-6ccc51cf5a5c
+
+		changedProperty = Name
+
+	measure 'Max Event Value' = ```
+			
+			MAXX(
+			    ALLSELECTED(Fact_UserEvents),
+			    [Event Count]
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 13a579e3-2648-48f1-97e9-85390932eeaa
+
+		changedProperty = Name
+
+	measure 'Event Color Scale' = ```
+			
+			DIVIDE(
+			    [Event Count],
+			    [Max Event Value]
+			)
+			
+			```
+		lineageTag: 84b292be-a878-42d2-8d2b-20ba22dd5f44
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column event_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: cc387261-3455-438b-baf9-95e438141aa6
+		sourceLineageTag: event_date
+		summarizeBy: none
+		sourceColumn: event_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: fc6a3503-43ff-4959-a026-42c322305e1f
+		sourceLineageTag: year
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2d7f879c-36fb-4caf-9c8c-e5eed7d2d234
+		sourceLineageTag: month
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column day
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6cfdda27-adec-44a2-85e6-cad66b3dc1ce
+		sourceLineageTag: day
+		summarizeBy: none
+		sourceColumn: day
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_of_week
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 0dbeea92-c61d-4eaf-bc3a-07cbcc0d1651
+		sourceLineageTag: day_of_week
+		summarizeBy: none
+		sourceColumn: day_of_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 07396052-2030-411f-b955-b6b2e4f3a780
+		sourceLineageTag: month_name
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: month
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Date = entity
+		mode: directLake
+		source
+			entityName: Dim_Date
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

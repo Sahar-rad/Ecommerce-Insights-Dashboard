@@ -1,0 +1,33 @@
+table Dim_User
+	lineageTag: fa809628-d24d-4614-8b42-0fb97e04acf2
+	sourceLineageTag: [dbo].[Dim_User]
+
+	column user_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 361befaa-3086-4dc0-bc58-c8a2076ab5cd
+		sourceLineageTag: user_id
+		summarizeBy: none
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_session
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 192ba31d-9d12-4be1-9baa-780097bf54b3
+		sourceLineageTag: user_session
+		summarizeBy: none
+		sourceColumn: user_session
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_User = entity
+		mode: directLake
+		source
+			entityName: Dim_User
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

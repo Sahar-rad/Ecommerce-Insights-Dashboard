@@ -1,0 +1,12 @@
+relationship 1d8d97fa-f0be-fd8f-ab05-35b2652c6efb
+	fromColumn: Fact_UserEvents.user_id
+	toColumn: Dim_User.user_id
+
+relationship edafc02f-a274-161a-9f62-4ccc642eeb62
+	fromColumn: Fact_UserEvents.product_id
+	toColumn: Dim_Product.product_id
+
+relationship a2da6159-609f-b9c1-f686-81d142030027
+	fromColumn: Fact_UserEvents.event_date
+	toColumn: Dim_Date.event_date
+
