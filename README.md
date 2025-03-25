@@ -53,6 +53,15 @@ A star schema was built with proper relationships between the tables.
 
 - `code.py`: Includes Python code for processing, cleaning, and transforming the raw CSV files before creating the semantic model in Microsoft Fabric.
 
+### 🔍 Insights Gained
+
+- 📈 November had the highest user engagement, with peaks in views and purchases.
+- 💡 The conversion rate was highest in November, possibly due to holiday promotions or user intent.
+- 🛒 Many users added items to the cart but didn’t complete the purchase, indicating potential drop-off points.
+- 👀 Views consistently outnumbered other event types, showing strong interest but lower commitment.
+- 📉 A noticeable decline in purchases and conversion rate in December suggests reduced post-holiday activity.
+
+
 ---
 
 > # Created by Sahar Radmehr.
