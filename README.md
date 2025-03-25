@@ -51,4 +51,4 @@ A star schema was built with proper relationships between the tables.
 
 ---
 
-> Created by Sahar Radmehr as part of my data analytics portfolio.
+> # Created by Sahar Radmehr as part of my data analytics portfolio.
