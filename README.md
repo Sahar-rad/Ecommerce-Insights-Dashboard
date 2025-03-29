@@ -21,6 +21,9 @@ The raw dataset was downloaded from **Kaggle**, containing monthly CSV files:
 - 2020-Jan.csv
 - 2020-Feb.csv
 
+You can access the dataset for this project here:  
+[Kaggle Dataset - Ecommerce Events History in Cosmetics Shop](https://www.kaggle.com/datasets/mkechinov/ecommerce-events-history-in-cosmetics-shop)
+
 ## 🏗️ Data Modeling
 
 The data was cleaned, transformed, and modeled in Microsoft Fabric. Custom **Fact and Dimension tables** were created manually, including:
@@ -60,7 +63,6 @@ A star schema was built with proper relationships between the tables.
 - 🛒 Many users added items to the cart but didn’t complete the purchase, indicating potential drop-off points.
 - 👀 Views consistently outnumbered other event types, showing strong interest but lower commitment.
 - 📉 A noticeable decline in purchases and conversion rate in December suggests reduced post-holiday activity.
-
 
 ---
 
