@@ -180,6 +180,64 @@ table Dim_Date
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Cart to Purchase Rate' =
+			
+			DIVIDE(
+			    [Purchase Count],
+			    [Cart Count],
+			    0
+			)
+		lineageTag: 57f93330-3918-4878-8246-53463f3767b4
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Measure
+		lineageTag: 636443fb-01d7-4bcd-b209-780550a078f3
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Measure 2'
+		lineageTag: eef6db2c-4779-4817-8ec3-bbd63fb22752
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Measure 3'
+		lineageTag: a06828ef-b58a-4643-940a-b8e03e54314c
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Measure 4'
+		lineageTag: 937de380-b3f8-4dab-b566-069382b01b57
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Average Conversion Rate' = AVERAGE('Fact_UserEvents'[Conversion Rate])
+		lineageTag: 688ca28f-00f1-4128-9768-b8494ba494a7
+
+		changedProperty = Name
+
+	measure 'Conversion Rate Target' = ```
+			0.14
+			
+			```
+		lineageTag: 131f4162-71c7-4aba-9d17-dba7959c42da
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cart to Purchase Target' = ```
+			0.35
+			
+			```
+		lineageTag: db7fca4f-bbed-433b-94d0-2b130ce1c0af
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column event_date
 		dataType: dateTime
 		formatString: General Date
